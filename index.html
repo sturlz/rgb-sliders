@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      input[type='range'] {
+        width: 100%;
+        margin: 20px auto;
+      }
+      #result {
+        width: 80%;
+        height: 300px;
+        /* border: #000 2px solid; */
+        margin: 10px auto;
+        align-items: center;
+        background-color: rgb(181, 116, 157);
+      }
+      #result #colorpick {
+        font-size: 18px;
+        font-family: arial;
+        text-align: center;
+        margin-top: 20%;
+      }
+      .sliders {
+        width: 60%;
+        /* max-width: max-content; */
+      }
+      .slider {
+        display: flex;
+        align-items: center;
+        text-align: start;
+        /* The following aren't needed, they just help us to see the effect */
+        /* border: 1px dotted #555; */
+      }
+      .slider label {
+        margin-right: 1em;
+      }
+    </style>
+    <title>RGB Slider</title>
+  </head>
+  <body>
+    <div id="result"><p id="colorpick">rgb (181, 116, 157)</p></div>
+    <div class="sliders">
+      <div class="slider">
+        <label>R </label>
+        <input type="range" value="181" id="red" min="0" max="255" />
+      </div>
+      <div class="slider">
+        <label>G </label>
+        <input type="range" value="116" id="green" min="0" max="255" />
+      </div>
+      <div class="slider">
+        <label>B </label>
+        <input type="range" value="157" id="blue" min="0" max="255" />
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      function myColor() {
+        var red = document.getElementById('red').value;
+        var green = document.getElementById('green').value;
+        var blue = document.getElementById('blue').value;
+
+        var color = 'rgb(' + red + ',' + green + ',' + blue + ')';
+        var colorText = 'rgb (' + red + ', ' + green + ', ' + blue + ')';
+
+        // document.body.style.backgroundColor = color
+        document.getElementById('colorpick').innerHTML = colorText;
+        document.getElementById('result').style.backgroundColor = color;
+
+        console.log(
+          color,
+          document.getElementById('result').style.backgroundColor
+        );
+      }
+
+      console.log(document.getElementById('result').backgroundColor);
+      document.getElementById('red').addEventListener('input', myColor);
+      document.getElementById('green').addEventListener('input', myColor);
+      document.getElementById('blue').addEventListener('input', myColor);
+    </script>
+  </body>
+</html>
